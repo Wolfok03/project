@@ -43,7 +43,5 @@ private String seachNangcao;
         this.danhMuc = danhMuc;
     }
 
-    public void setSeachNangcao(String seachNangcao) {
-        this.seachNangcao = seachNangcao;
-    }
+
 }
