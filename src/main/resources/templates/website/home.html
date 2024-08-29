@@ -12,9 +12,8 @@
   <title>Home</title>
   <style>
     .carousel{
-      transition: opacity 0.4ms ease;
+      transition: opacity 5s ease;
     }
-
 
     .bg-color-primary{
       background-color: #2cc197;
@@ -25,6 +24,14 @@
 
     .w-95{
       width: 95%;
+    }
+    .carousel-inner
+    .carousel-item > img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      margin: 0;
+      padding: 0;
     }
 
     .btn.btn-primary{
@@ -43,13 +50,9 @@
       color: #ffffff !important;
     }
 
-    #item-select{
-      transition: ease 0.5ms;
-    }
-
-    #item-select:hover{
+    #item-select>img:hover{
+      transition: opacity 0.5ms ease-in;
       scale: 1.02;
-      border: solid 5px #2cc197;
     }
 
     #sp span {
@@ -161,19 +164,19 @@
         <div class="row">
           <div class="col-md-8 p-1">
             <!-- Tạo vòng quay ảnh -->
-            <div id="demo" class="carousel slide" data-bs-ride="carousel" data-bs-interval="1000">
+            <div id="demo" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <img src="https://file.hstatic.net/200000722513/file/gearvn-laptop-asus-vivobook-14-oled-m1405ya-km047w-slider_46dfc8f3a021418fb33af9be6052b315.png"
-                       class="d-block w-100" style="">
+                       class="d-block w-100">
                 </div>
                 <div class="carousel-item">
                   <img src="https://file.hstatic.net/200000722513/file/loa_xin_slider_55571db8742146cd85eef265cf950b35.png"
-                       class="d-block w-100" style="">
+                       class="d-block w-100">
                 </div>
                 <div class="carousel-item">
                   <img src="https://file.hstatic.net/200000722513/file/man_hinh_slider_295b45dfd3ee4f3cb6a2632ab018e588.png"
-                       class="d-block w-100" style="">
+                       class="d-block w-100">
                 </div>
               </div>
 
