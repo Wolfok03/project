@@ -1,24 +1,23 @@
 package com.example.pro2.Controllers;
 
-
 import com.example.pro2.Model.ProductDto;
-import jakarta.validation.Valid;
-import org.springframework.data.domain.Sort;
-import org.springframework.ui.Model;
-
-//import ch.qos.logback.core.model.Model;
 import com.example.pro2.Model.product;
 import com.example.pro2.services.ProductsRespository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
-import java.nio.file.*;
-
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Date;
 import java.util.List;
 
