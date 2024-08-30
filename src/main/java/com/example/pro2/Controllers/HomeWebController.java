@@ -1,7 +1,7 @@
 package com.example.pro2.Controllers;
 
 
-import com.example.pro2.Model.product;
+import com.example.pro2.models.product;
 import com.example.pro2.services.ProductsRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;

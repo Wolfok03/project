@@ -1,7 +1,7 @@
 package com.example.pro2.Controllers;
 
-import com.example.pro2.Model.ProductDto;
-import com.example.pro2.Model.product;
+import com.example.pro2.models.ProductDto;
+import com.example.pro2.models.product;
 import com.example.pro2.services.ProductsRespository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -182,4 +182,3 @@ public class ProductsController {
         return "redirect:/products";
     }
 }
-

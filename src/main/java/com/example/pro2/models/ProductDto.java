@@ -1,4 +1,4 @@
-package com.example.pro2.Model;
+package com.example.pro2.models;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
