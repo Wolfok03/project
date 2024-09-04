@@ -24,4 +24,10 @@ public class HomeWebController {
         model.addAttribute("products",products);
         return "website/home";
     }
+
+    @GetMapping("/giohang")
+    public String gioHang(Model model) {
+
+        return "website/giohang";
+    }
 }

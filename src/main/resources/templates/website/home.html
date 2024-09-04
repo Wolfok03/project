@@ -11,10 +11,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <title>Home</title>
   <style>
-    .carousel{
-      transition: opacity 5s ease;
-    }
-
     .bg-color-primary{
       background-color: #2cc197;
     }
@@ -50,9 +46,10 @@
       color: #ffffff !important;
     }
 
-    #item-select>img:hover{
-      transition: opacity 0.5ms ease-in;
-      scale: 1.02;
+    #item-select img:hover{
+      transition: opacity 0.5ms ease-out;
+      scale: 1.1;
+      overflow: hidden;
     }
 
     #sp span {
@@ -162,7 +159,7 @@
       <!-- Sidebar Column for Product Display -->
       <div class="col-md-9 p-1">
         <div class="row">
-          <div class="col-md-8 p-1">
+          <div class="col-md-8">
             <!-- Tạo vòng quay ảnh -->
             <div id="demo" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
@@ -220,7 +217,7 @@
               <p class="card-text">Brand: <span th:text="${product.brand}"></span></p>
               <p class="card-text">Category: <span th:text="${product.category}"></span></p>
               <p class="card-text">Price: <span th:text="${product.price} + ' $'"></span></p>
-              <a href="#" class="btn btn-primary">Add to Cart</a>
+              <a href="website/giohang" class="btn btn-primary">Add to Cart</a>
             </div>
           </div>
         </div>
