@@ -60,7 +60,8 @@
             margin: 0 auto;
         }
 
-        input {
+        input,
+        .form-select{
             width: 100%;
             padding: 8px;
             margin-top: 10px;
@@ -89,15 +90,6 @@
             gap: 5px;
             margin-top: 10px;
         }
-
-        .gender-group{
-            display: inline-flex;
-        }
-
-        select {
-            width: 200px;
-            height: 20px; /* Thay đổi kích thước của hộp chọn để hiển thị nhiều mục */
-        }
     </style>
 </head>
 
@@ -120,15 +112,12 @@
             </tr>
             <tr>
                 <td>Gender:</td>
-                <!-- <td>
-                    <div class="gender-group">
-                        <input type="checkbox" name="Nam" id="Nam">Nam
-                        <input type="checkbox" name="Nu" id="Nu">Nữ
-                        <input type="checkbox" name="Khac" id="Khac">Khác
-                    </div>
-                </td> -->
                 <td>
-                    <input type="text" multiple>
+                    <select class="form-select" th:field="">
+                        <option value='Other'>Other</option>
+                        <option value='Phones'>Male</option>
+                        <option value='Computers'>Female</option>
+                    </select>
                 </td>
             </tr>
             <tr>
