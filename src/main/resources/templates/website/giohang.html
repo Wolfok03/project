@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+<style>
+    .card-img-top {
+        object-fit: cover;
+        width: 50%;
+
+    }
+</style>
 <body>
-<h1>Có tien ko ma xem</h1>
+<div class="container" style="margin: 0 auto">
+    <div class="row">
+
+            <div class="card">
+                <img th:src="@{'/images/' + ${product.imageFileName}}" class="card-img-top" alt="Product Image" />  <div class="card-body" style=" ">
+                <h5 class="card-title" th:text="${product.productName}"></h5>
+                <p class="card-text">Brand: <span th:text="${product.brand.brand_Name}"></span></p>
+                <p class="card-text">Category: <span th:text="${product.categorie.categorie_name}"></span></p>
+                <p class="card-text">Description: <span th:text="${product.productDescription}"></span></p>
+                <p class="card-text">CatQuantity: <span th:text="${product.productQuantity}"></span></p>
+                <p class="card-text">Price: <span th:text="${product.productPrice} + ' $'"></span></p>
+            </div>
+            </div>
+
+    </div>
+</div>
 </body>
 </html>

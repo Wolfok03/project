@@ -1,21 +1,8 @@
 //package com.example.pro2.models;
-//
-//import jakarta.persistence.Entity;
-//import jakarta.persistence.GeneratedValue;
-//import jakarta.persistence.GenerationType;
-//import jakarta.persistence.Id;
-//import org.springframework.data.relational.core.mapping.Table;
-//
 //import java.util.Date;
 //
-//@Entity
-//@Table(name = "user")
-//public class user {
 //
-//    @Id
-//    @GeneratedValue(strategy= GenerationType.IDENTITY)
-//    private int id;
-//
+//public class userA {
 //    private String ten;
 //    private String diaChi;
 //    private int sdt;
@@ -24,14 +11,6 @@
 //    private String email;
 //    private String username;
 //    private String password;
-//
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 //
 //    public String getTen() {
 //        return ten;

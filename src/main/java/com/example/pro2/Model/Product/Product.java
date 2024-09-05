@@ -2,31 +2,60 @@
 
 
 package com.example.pro2.Model.Product;
+import com.example.pro2.Model.brands.brand;
+import com.example.pro2.Model.categories.categorie;
+import com.example.pro2.Model.warranies.warranty;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
-//@Entity
-//@Table (name = "products")
+import java.util.Date;
+
+@Entity
+@Table (name = "products")
 public class Product {
     @Id
-    private int ProductId;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int id;
     private String ProductName;
     private String ProductDescription;
     private Double ProductPrice;
-    private String ProductImage;
-    private String Categorie_id;
+    private String imageFileName;
+    private Date createdAt;
     private int ProductQuantity;
-    private int Brand_id;
-    private int warranty_id;
+    @ManyToOne()
+    @JoinColumn(name = "Brand_id")
+    private brand brand;
 
-    public int getWarranty_id() {
-        return warranty_id;
+    @ManyToOne()
+    @JoinColumn(name = "Categorie_id")
+    private categorie categorie;
+
+
+
+
+
+    public String getImageFileName() {
+        return imageFileName;
     }
 
-    public void setWarranty_id(int warranty_id) {
-        this.warranty_id = warranty_id;
+    public void setImageFileName(String imageFileName) {
+        this.imageFileName = imageFileName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getProductName() {
@@ -53,21 +82,7 @@ public class Product {
         ProductPrice = productPrice;
     }
 
-    public String getProductImage() {
-        return ProductImage;
-    }
 
-    public void setProductImage(String productImage) {
-        ProductImage = productImage;
-    }
-
-    public String getCategorie_id() {
-        return Categorie_id;
-    }
-
-    public void setCategorie_id(String categorie_id) {
-        this.Categorie_id = categorie_id;
-    }
 
     public int getProductQuantity() {
         return ProductQuantity;
@@ -77,19 +92,20 @@ public class Product {
         ProductQuantity = productQuantity;
     }
 
-    public int getBrand_id() {
-        return Brand_id;
+
+    public com.example.pro2.Model.categories.categorie getCategorie() {
+        return categorie;
     }
 
-    public void setBrands_id(int brand_id) {
-        this.Brand_id = brand_id;
+    public void setCategorie(com.example.pro2.Model.categories.categorie categorie) {
+        this.categorie = categorie;
     }
 
-    public void setId(int id) {
-        this.ProductId = id;
+    public com.example.pro2.Model.brands.brand getBrand() {
+        return brand;
     }
 
-    public int getId() {
-        return ProductId;
+    public void setBrand(com.example.pro2.Model.brands.brand brand) {
+        this.brand = brand;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.pro2.Model.Product;
+package com.example.pro2.Model.warranies;
 
 
 import jakarta.persistence.Entity;

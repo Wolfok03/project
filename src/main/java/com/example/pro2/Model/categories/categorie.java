@@ -1,4 +1,4 @@
-package com.example.pro2.Model.Product;
+package com.example.pro2.Model.categories;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 @Table(name = "categories")
 public class categorie {
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private int Categorie_id;
     private String Categorie_name;
 
@@ -15,7 +16,7 @@ public class categorie {
     }
 
     public void setCategorie_id(int categorie_id) {
-        this.Categorie_id = categorie_id;
+        Categorie_id = categorie_id;
     }
 
     public String getCategorie_name() {
@@ -23,6 +24,6 @@ public class categorie {
     }
 
     public void setCategorie_name(String categorie_name) {
-        this.Categorie_name = categorie_name;
+        Categorie_name = categorie_name;
     }
 }
