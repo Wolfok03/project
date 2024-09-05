@@ -1,0 +1,48 @@
+.bg-color-primary{
+    background-color: #2cc197;
+}
+.text-color-primary{
+    color: #E30019;
+}
+
+.w-95{
+    width: 95%;
+}
+.carousel-inner
+.carousel-item > img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.btn.btn-primary{
+   /*margin-top: 25px;*/
+}
+
+.card-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.nav-link:hover {
+    background-color: #2cc197;
+    color: #ffffff !important;
+}
+
+#item-select img:hover{
+    transition: opacity 0.5ms ease-out;
+    scale: 1.1;
+    overflow: hidden;
+}
+
+#sp span {
+    font-size: 24px;
+    font-weight: 500;
+}
+a.nav-link{
+    color: black ;
+}

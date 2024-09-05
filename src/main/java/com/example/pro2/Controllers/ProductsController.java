@@ -2,6 +2,10 @@ package com.example.pro2.Controllers;
 
 import com.example.pro2.models.ProductDto;
 import com.example.pro2.models.product;
+import com.example.pro2.Model.categories.categorieA;
+import com.example.pro2.Model.categories.categorie;
+
+import com.example.pro2.services.CategoriesRespository;
 import com.example.pro2.services.ProductsRespository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +30,7 @@ import java.util.List;
 public class ProductsController {
     @Autowired
     private ProductsRespository repo;
+    private CategoriesRespository categoriesRespository;
 
     @GetMapping({"", "/"})
     public String showProductList(Model model) {
@@ -36,10 +41,17 @@ public class ProductsController {
 
     @GetMapping("/create")
     public String showCreatePage (Model model) {
+//        List<categorie> categories = categoriesRespository.findAll();
+//        model.addAttribute("categories", categories);
+//
+//        categorie categorie = new categorie();
+//        model.addAttribute("categorie", categorie);
+
         ProductDto productDto = new ProductDto();
         model.addAttribute("productDto", productDto);
         return "products/CreateProduct";
     }
+
 
     @PostMapping("/create")
     public String createProduct(
