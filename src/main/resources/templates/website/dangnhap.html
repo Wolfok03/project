@@ -1,132 +1,546 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.springframework.org/schema/data/jaxb">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <title>Home</title>
     <style>
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
+        body {
+            background-color: #ffffff;
         }
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        .bg-color-primary {
+            background-color: #2cc197;
+        }
+
+        .w-95 {
+            width: 95%;
+        }
+
+        .carousel-inner .carousel-item img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
             margin: 0;
+            padding: 0;
+        }
+
+        .btn.btn-primary {
+            margin-top: 25px;
+        }
+
+        .card-title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .link:hover {
+            text-decoration: none;
+            color: #2cc197;
+        }
+
+
+
+        .nav-link:hover {
+            background-color: #2cc197;
+            color: #ffffff !important;
+        }
+
+        .card {
             overflow: hidden;
         }
 
-        .background img {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        #item-select img:hover {
+            transition: opacity 0.5s ease-out;
+            scale: 1.2;
+        }
+
+        #sp span {
+            font-size: 24px;
+            font-weight: 500;
+        }
+
+        a.nav-link {
+            color: black;
+        }
+
+        .card-img-top {
             object-fit: cover;
-            z-index: 1;
+            width: 50%;
+
         }
 
-        .form-container {
-            position: relative;
-            z-index: 2;
+        /* thêm */
+        .news,
+        .ytchannel {
+            border-radius: 16px;
+            border-right: 10px solid #363636;
+            border-left: 1px solid #d6d6d6;
+        }
+
+        .item {
+            padding: 0 6px;
+
+        }
+
+        .news_header,
+        .ytchannel_header {
+            padding: 18px 12px 10px;
+            border-bottom: 1px solid #29A07E;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            width: 100%;
+            justify-content: space-between;
         }
 
-        .content {
-            background-color: white;
-            border: 2px solid black;
-            padding: 20px;
-            width: 300px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .font_h2 {
+            font-weight: 700;
+        }
+
+        .news_header-left p {
+            opacity: 70%;
+            font-weight: 100;
+            margin-bottom: 0;
+            margin-top: -12px;
+        }
+
+        .news_header-right {
+            border: 1px solid #29A07E;
+            border-radius: 22px;
+            font-weight: 500;
+            font-size: 13px;
+            height: 36px;
+            line-height: 36px;
             text-align: center;
+            padding: 0 18px;
+            text-decoration: none;
+            color: #29A07E;
         }
 
-        .content h1 {
-            margin-bottom: 20px;
+        .news_header-right:hover {
+            background-color: #29A07E;
+            color: #fff;
         }
 
-        table {
+        .sp {
+            /* margin: 16px 0; */
+            padding: 0 10px;
+        }
+
+        .sp_image {
             width: 100%;
-            margin: 0 auto;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        button {
-            border-radius: 10px;
-            width: 100px;
-            height: 30px;
-            background-color: aqua;
-            margin: 10px;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        button:hover {
-            background-color: #00cccc;
-        }
-
-        label {
+            text-decoration: none;
             display: flex;
+            margin: 16px 0;
+        }
+
+        .sp_image img {
+            width: 270px;
+            height: auto;
+            border-radius: 10%;
+        }
+
+        .sp_image span {
+            color: black;
+            font-weight: 500;
             align-items: center;
-            gap: 5px;
-            margin-top: 10px;
+            margin-left: 20px;
+        }
+
+        .sp_image span:hover {
+            color: #29A07E;
+        }
+
+        .ytchannel_header {
+            height: 80px;
+        }
+
+        .n {
+            padding: 10px;
+
+        }
+
+        .grid {
+            padding: 0 10px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .grid1 {
+
+            grid-column: span 2 / span 2;
+            grid-row: span 3 / span 3;
+        }
+
+        .grid2 {
+            grid-column: span 2 / span 2;
+            grid-row: span 3 / span 3;
+            grid-column-start: 3;
+        }
+
+        .img_video {
+            width: 100%;
+            /* margin: 10px; */
+            border-radius: 20px;
+            position: relative;
+            margin: 10px;
+
         }
     </style>
 </head>
 
+
 <body>
-<div class="background">
-    <img src="https://img2.thuthuatphanmem.vn/uploads/2019/03/07/anh-nen-power-point-cay-xanh-la-dep_111222877.jpg"
-         alt="ảnh nền">
+<!--header-->
+<header>
+    <div class="bg-color-primary fixed-top" style="max-width: 1140px; margin: auto">
+        <div class="container">
+            <header class="navbar navbar-expand-lg" style="padding:8px 0px">
+                <div class="row w-100">
+                    <!-- Logo or Brand -->
+                    <div class="col-2" style="padding: 0px">
+                        <a class="navbar-brand" href="./home.html">
+                            <img src="http://24laptop.vn/template/default/images/logo.png" alt="Logo"
+                                 style="height: 60px;width: 200px">
+                        </a>
+                    </div>
+
+                    <!-- Search Bar with Search Icon -->
+                    <div class="col-8" style="margin: auto">
+                        <form class="form-inline m-2 w-100">
+                            <div class="input-group w-100">
+                                <input type="text" class="form-control " placeholder="Tìm kiếm" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn bg-color-primary border-white text-white" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Cart and Login Links -->
+                    <div class="col-2 d-flex justify-content-end align-items-center p-1">
+                        <a href="#" class="text-white text-decoration-none m-2 load-page" data-page="giohang.html">
+                            <i class="fas fa-shopping-cart text-white"></i>
+                        </a>
+                        <a href="/website/dangnhap" class="btn bg-color-primary text-white border-white ms-3 load-page"
+                           data-page="dangnhap.html">
+                            <i class="fas fa-user"></i> Đăng nhập
+                        </a>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+    <div class="container mb-2" style="margin-top: 88px; padding: 0">
+        <ul class="nav nav-tabs justify-content-around nav-fill bg-white w-100 mt-3"
+            style="justify-content: space-around">
+            <li class="nav-item"><a href="#" class="nav-link load-page" data-page="hometitle.html"><i
+                    class="bi bi-geo-alt"></i> HỆ THỐNG SHOWROOOM</a></li>
+            <li class="nav-item"><a href="#" class="nav-link load-page" data-page=""><i
+                    class="fa-solid fa-bars"></i> DANH MỤC</a></li>
+            <li class="nav-item"><a href="#" class="nav-link load-page" data-page="thanhtoan.html"><i
+                    class="bi bi-wallet2"></i>HƯỚNG DẪN THANH TOÁN</a></li>
+            <li class="nav-item"><a href="#" class="nav-link load-page" data-page="tragop.html"><i
+                    class="bi bi-coin"></i> HƯỚNG DẪN TRẢ GÓP</a></li>
+            <li class="nav-item"><a href="#" class="nav-link load-page" data-page="baohanh.html"><i
+                    class="bi bi-shield-check"></i> HƯỚNG DẪN BẢO HÀNH</a></li>
+        </ul>
+    </div>
+
+</header>
+
+<!--title-->
+
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <!-- left -->
+                <div class="col-6">
+                    <p><b class="mb-2">Thông tin khách hàng đăng nhập hệ thống</b></p>
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="row mb-3">
+                            <label class="col-sm-4 col-form-label">Tên đăng nhập</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" th:field="${userA.username}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-4 col-form-label">Mật khẩu</label>
+                            <div class="col-sm-8">
+                                <input class="form-control" type="text" th:field="${userA.password}">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="offset-sm-4 col-sm-4 d-grid">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                            <div class="col-sm-4 d-grid">
+                                <!-- <a class="btn btn-outline-primary" href="./" role="button">Cancel</a> -->
+                                <button type="submit" class="btn btn-primary" href="/home">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- right -->
+                <div class="col-6">
+                    <p><b class="mb-2">Bạn chưa là thành viên của chúng tôi?</b></p>
+                    <p>Hãy đăng kí để chúng ta cùng trải nghiệm ngay nào</p>
+                    <a href="/website/dangki"  >Đăng ký tài khoản</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        function showErrorMessage() {
+            var errorMessage = document.getElementsByClassName("error-message");
+            errorMessage.style.display = "block";
+            // Hiển thị thông báo
+
+            // Ẩn thông báo sau 5 giây
+            setTimeout(function () {
+                errorMessage.style.display = "none";
+            }, 5000);
+        }
+
+        function loadPage(page) {
+            $("#content").load(page);
+        }
+
+        $(".load-page").click(function (e) {
+            e.preventDefault(); // Ngăn chặn liên kết mở theo cách mặc định
+            var page = $(this).data("page"); // Lấy giá trị của thuộc tính data-page
+            $("#content").load(page); // Tải nội dung file vào div content
+        });
+    </script>
+
+<!-- <script>
+    $(document).ready(function () {
+        // Mặc định tải file title.html vào content khi trang mở
+        $("#content").load("hometitle.html");
+
+        // Hàm để tải trang khi nhấn vào link
+        function loadPage(page) {
+            $("#content").load(page);
+        }
+
+        // Khi nhấn vào một liên kết có class 'load-page', nội dung sẽ được tải
+        $(document).on("click", ".load-page", function (e) {
+            e.preventDefault(); // Ngăn chặn sự kiện mặc định
+            var page = $(this).data("page");
+            $("#content").load(page, function () {
+                // Tìm tất cả các thẻ script từ nội dung đã tải và thêm vào trang home
+                $("#content script").each(function () {
+                    var scriptContent = $(this).html();  // Lấy nội dung script
+                    $.globalEval(scriptContent);  // Thực thi nội dung script
+                });
+            }) // Nạp nội dung vào #content
+        });
+    });
+</script> -->
+
+<script>
+    $(document).ready(function () {
+        // Mặc định tải file hometitle.html vào content khi trang mở
+        $("#content").load("hometitle.html", function () {
+            executeScripts("#content");
+        });
+
+        // Hàm để tải trang khi nhấn vào link
+        function loadPage(page) {
+            $("#content").load(page, function () {
+                // Sau khi nội dung được nạp vào, thực thi script
+                executeScripts("#content");
+            });
+        }
+
+        // Hàm thực thi các script từ nội dung đã tải
+        function executeScripts(selector) {
+            // Lấy tất cả các thẻ script trong nội dung đã nạp
+            $(selector).find("script").each(function () {
+                var scriptSrc = $(this).attr('src');  // Lấy src của script (nếu có)
+                if (scriptSrc) {
+                    // Nếu script có src, nạp lại qua $.getScript
+                    $.getScript(scriptSrc);
+                } else {
+                    // Nếu là script inline, thực thi nội dung script bằng $.globalEval
+                    $.globalEval($(this).html());
+                }
+            });
+        }
+
+        // Khi nhấn vào một liên kết có class 'load-page', nội dung sẽ được tải
+        $(document).on("click", ".load-page", function (e) {
+            e.preventDefault(); // Ngăn chặn sự kiện mặc định
+            var page = $(this).data("page");
+            loadPage(page);  // Gọi hàm loadPage với file cần tải
+        });
+    });
+</script>
+
+<!-- mục thêm -->
+<div class="container">
+    <div class="row d-flex ">
+        <div class="news col-6 bg-light">
+            <div class="item">
+                <div class="news_header">
+
+                    <div class="news_header-left">
+                        <h3 class="font_h2">TIN TỨC & SỰ KIỆN</h3>
+                        <p>Cập nhật thông tin công nghệ từ ....</p>
+                    </div>
+
+                    <a class="news_header-right" href="#">
+                        XEM THÊM
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="sp mt-3">
+                <a class="sp_image row" href="#">
+                    <img src="https://lacdau.com/media/news/14-maxresdefault-2-711x400.jpg" alt="sanpham" class="col-6">
+                    <span class="col-5">CHẤT ! SIÊU CHẤT ! LED RGB CHẤT NHẤT BẠN TỪNG THẤY LUÔN !!</span>
+                </a>
+
+                <a class="sp_image row" href="#">
+                    <img src="https://lacdau.com/media/news/22-68_h_____ng_d___n_k___t_n___i_tay_c___m_ps4.jpg"
+                         alt="sanpham" class="col-6">
+                    <span class="col-5">HƯỚNG DẪN KẾT NỐI TAY CẦM PS4 VÀ PC ĐIỆN THOẠI</span>
+                </a>
+
+                <a class="sp_image row d-flex" href="#">
+                    <img src="https://lacdau.com/media/news/19-19-tuthietke.jpg" alt="sanpham" class="col-6">
+                    <span class="col-5">DỊCH VỤ LÓT CHUỘT THEO YÊU CẦU TẠI Đây</span>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="ytchannel col-6 bg-light">
+
+            <div class="item">
+                <div class="ytchannel_header">
+
+                    <div class="ytchannel_header-left">
+                        <h3 class="font_h2">YOUTUBE CHANNEL</h3>
+                    </div>
+
+                    <a class="news_header-right" href="#">
+                        XEM THÊM
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="video">
+                <!-- -rel-noopener : mở luôn trong trang-->
+                <div class="n">
+                    <a href="https://www.youtube.com/watch?v=IbynkPYszfY&t=31s-rel-noopener" class="video_1">
+                        <img src="https://lacdau.com/media/news/14-maxresdefault-2-711x400.jpg" class="img_video"
+                             alt="">
+                    </a>
+                </div>
+
+                <div class="grid">
+                    <div class="grid1">
+                        <a href="https://www.youtube.com/watch?v=Vziuodyk80k&t=1s-rel-noopener" class="video_2 ">
+                            <img src="https://lacdau.com/media/news/25-screenshot_1700647526.png" class="img_video"
+                                 alt="">
+                        </a>
+                    </div>
+
+                    <div class="grid2">
+                        <a href="https://www.youtube.com/watch?v=Oapr7x2vbzU&t=5s-rel-noopener" class="video_3 ">
+                            <img src="https://lacdau.com/media/news/24-screenshot_1700647271.png" class="img_video"
+                                 alt="">
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
 </div>
-<div class="form-container">
-    <form action="" method="post" class="content">
-        <h1>ĐĂNG NHẬP</h1>
-        <table>
-            <tr>
-                <td>Username:</td>
-                <td><input type="text" placeholder="Nhập tài khoản"></td>
-            </tr>
-            <tr>
-                <td>Password:</td>
-                <td><input type="password" placeholder="Nhập mật khẩu"></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <label>
-                        <input type="checkbox">
-                        <span>Ghi nhớ tài khoản</span>
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" style="text-align: center;">
-                    <button type="submit">Đăng nhập</button>
-                    <button type="button">Đăng kí</button>
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
+
+
+
+
+<!-- Tạo footer cho trang web -->
+<footer class="bg-light text-center text-left mt-5 pt-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-3 col-3 mb-4">
+                <p>TỔNG ĐÀI HỖ TRỢ (8:00 - 21:00)</p>
+                <p>CSKH: 1800.6975</p>
+                <p>Bảo hành: 1800.6975</p>
+                <p>HTKT: 1800.6975</p>
+                <p>Email: cskh@colamthimoicoan.com</p>
+
+            </div>
+            <div class="col-3 col-3 mb-4">
+                <p><strong>Mã số doanh nghiệp:</strong> 200219899 do Sở Kế hoạch & Đầu
+                    Tư TP Hà Nội. Cấp ngày
+                    17/6/2021</p>
+            </div>
+            <div class="col-3 col-3 mb-4">
+                <p><strong>Kết nối với chúng tôi</strong></p>
+                <ul class="list-inline  ">
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="link bi bi-facebook"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="link bi bi-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="link bi bi-google"></i>
+                        </a>
+                    </li>
+
+                    <li class="list-inline-item ms-0">
+                        <a href="#">
+                            <i class="link bi bi-instagram"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3 col-3 mb-4">
+                <p><strong>Slogan:</strong> Nâng tầm cuộc sống</p>
+                <p><strong>Giá trị cốt lõi:</strong> Uy tín - Chất lượng - Chuyên nghiệp
+                </p>
+                <p><strong>Tuyển dụng:</strong> <a href="#" class="link">Liên hệ</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
 </body>
 
 </html>

@@ -5,17 +5,18 @@ import com.example.pro2.Model.Product.Product;
 import com.example.pro2.Model.Product.ProductA;
 import com.example.pro2.Model.brands.brand;
 import com.example.pro2.Model.categories.categorie;
+import com.example.pro2.Model.Product.colors.color;
+//import com.example.pro2.Model.Product.productLaptop;
+//import com.example.pro2.Model.Product.productLaptopA;
 
-import com.example.pro2.services.BrandsRespository;
-import com.example.pro2.services.CategoriesRespository;
-import com.example.pro2.services.ProductsRespository;
+
+import com.example.pro2.services.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,12 +37,15 @@ public class ProductsController {
     private CategoriesRespository ca;
     @Autowired
     private BrandsRespository ba;
+//    @Autowired
+//    private ProductLaptopRespository lap;
+    @Autowired
+    private ColorRespository cl;
 
     @GetMapping({"", "/"})
     public String showProductList(Model model) {
         List<Product> products = repo.findAll(Sort.by(Sort.Direction.DESC, "id"));
         model.addAttribute("products", products);
-
 
 
         return "products/index";
@@ -51,9 +55,12 @@ public class ProductsController {
     public String showCreatePage (Model model) {
         List<brand> brands = ba.findAll();
         List<categorie> categories = ca.findAll();
+        List<color> colors = cl.findAll();
+
 
         model.addAttribute("categories", categories);
         model.addAttribute("brands", brands);
+        model.addAttribute("colors", colors);
 //        categorie categorie = new categorie();
 //        model.addAttribute("categorie", categorie);
 
@@ -61,6 +68,9 @@ public class ProductsController {
 //        brand brand = new brand();
 //        model.addAttribute("brand", brand);
 
+//        productLaptopA productLaptopA = new productLaptopA();
+//
+//        model.addAttribute("ProductLaptopA", productLaptopA);
         ProductA ProductA = new ProductA();
         model.addAttribute("ProductA", ProductA);
         return "products/CreateProduct";
@@ -77,17 +87,27 @@ public class ProductsController {
         return null; // Không tìm thấy thương hiệu nào
     }
 
-//    public brand findBybrandName(band name) {
-//        List<brand> brands = ba.findAll();
-//
-//        for (brand brand : brands) {
-//            if (brand.getBrand_Name() == name) {
-//                return brand; // Trả về thương hiệu nếu tìm thấy
-//            }
-//        }
-//        return null; // Không tìm thấy thương hiệu nào
-//    }
+    public color findBycolorId(int id) {
+        List<color> colors = cl.findAll();
 
+        for (color color : colors) {
+            if (color.getColor_id() == id) {
+                return color; // Trả về thương hiệu nếu tìm thấy
+            }
+        }
+        return null; // Không tìm thấy thương hiệu nào
+    }
+
+    public Product findByproductId(int id) {
+        List<Product> Products = repo.findAll();
+
+        for (Product Product : Products) {
+            if (Product.getId() == id) {
+                return Product; // Trả về thương hiệu nếu tìm thấy
+            }
+        }
+        return null; // Không tìm thấy thương hiệu nào
+    }
     public categorie findBycategorieId(int id) {
         List<categorie> categories = ca.findAll();
 
@@ -101,15 +121,13 @@ public class ProductsController {
 
     @PostMapping("/create")
     public String createProduct(
-            @Valid @ModelAttribute ProductA ProductA,
-            BindingResult result
+
+
+            @Valid @ModelAttribute ProductA ProductA
+//            , productLaptopA productLaptopA
+
     ) {
-        if (ProductA.getImageFile().isEmpty()) {
-            result.addError(new FieldError("ProductA", "imageFile", "The image file is"));
-        }
-        if (result.hasErrors()) {
-            return "products/CreateProduct";
-        }
+
 
 
         // luu anh
@@ -130,6 +148,7 @@ public class ProductsController {
             System.out.println("Exception: " + ex.getMessage());
         }
 
+// Thêm sản phẩm
 
         Product product = new Product();
         int brandId = ProductA.getBrand_id();
@@ -146,8 +165,26 @@ public class ProductsController {
         product.setProductQuantity(ProductA.getProductQuantity());
         product.setCreatedAt (createdAt);
         product.setImageFileName (storageFileName);
-        ;
         repo.save(product);
+
+//        Thêm chi tiet san pham
+//        productLaptop productLaptop = new productLaptop();
+//        int colorId = productLaptopA.getColor_id();
+//        color color = findBycolorId(colorId);
+//        productLaptop.setColor(color);
+//
+//        int productId = productLaptopA.getProduct();
+//        Product product1 = findByproductId(productId);
+//        productLaptop.setProduct(product1);
+//
+//        productLaptop.setCPU(productLaptopA.getCPU());
+//        productLaptop.setBoNho(productLaptopA.getBoNho());
+//        productLaptop.setGraphics(productLaptopA.getGraphics());
+//        productLaptop.setScreenSize(productLaptopA.getScreenSize());
+//        productLaptop.setBattery(productLaptopA.getBattery());
+//        productLaptop.setWeight(productLaptopA.getWeight());
+//
+//        lap.save(productLaptop);
         return "redirect:/products";
     }
 
@@ -227,7 +264,7 @@ public class ProductsController {
                 brand brand = findBybrandId(brandId);
                 product.setBrand(brand);
 
-                int categorieId = ProductA.getBrand_id();
+                int categorieId = ProductA.getCategorie_id();
                 categorie categorie = findBycategorieId(categorieId);
                 product.setCategorie(categorie);
 
@@ -268,4 +305,6 @@ public class ProductsController {
         }
         return "redirect:/products";
     }
+
+
 }

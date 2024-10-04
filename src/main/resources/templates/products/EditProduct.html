@@ -43,7 +43,7 @@
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Category</label>
                     <div class="col-sm-8">
-                        <select class="form-select" th:field="${productA.categorie_id}">
+                        <select class="form-select" th:field="${productA.categorie_id}" oninput="showInput(this.value)">
                             <option th:each="categorie : ${categories}"
                                     th:value="${categorie.categorie_id}"
                                     th:text="${categorie.categorie_name}"></option>
@@ -77,8 +77,8 @@
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label">Description</label>
                     <div class="col-sm-8">
-<textarea class="form-control"
-          th:field="${productA.productDescription}"></textarea>
+                        <textarea class="form-control"
+                      th:field="${productA.productDescription}"></textarea>
 
                     </div>
                 </div>
@@ -92,6 +92,7 @@
                     </div>
                 </div>
 
+
                 <div class="row">
                     <div class="offset-sm-4 col-sm-4 d-grid">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -104,6 +105,7 @@
         </div>
     </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
